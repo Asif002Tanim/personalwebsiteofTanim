@@ -1,0 +1,1317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Asif Salman Khan Tanim — Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0a0f1a;
+    --bg2: #111927;
+    --bg3: #182133;
+    --text: #e8edf5;
+    --muted: #7a8aab;
+    --accent: #5ba4f5;
+    --accent2: #4ecdc4;
+    --gold: #c9a96e;
+    --border: rgba(91,164,245,0.1);
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --sans: 'DM Sans', sans-serif;
+    --mono: 'DM Mono', monospace;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 3rem;
+    background: rgba(10,15,26,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--accent);
+    letter-spacing: 0.02em;
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+
+  .nav-links a:hover { color: var(--accent); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 8rem 3rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -20%; right: -10%;
+    width: 600px; height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(91,164,245,0.07) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -10%; left: -5%;
+    width: 400px; height: 400px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(78,205,196,0.05) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .hero-tag {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .hero-tag::before {
+    content: '';
+    width: 2rem; height: 1px;
+    background: var(--accent);
+  }
+
+  .hero-name {
+    font-family: var(--serif);
+    font-size: clamp(2.8rem, 5vw, 4rem);
+    font-weight: 300;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.01em;
+  }
+
+  .hero-name em { font-style: italic; color: var(--accent); }
+
+  .hero-desc {
+    font-size: 0.95rem;
+    color: var(--muted);
+    max-width: 420px;
+    line-height: 1.8;
+    margin-bottom: 2.5rem;
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 0.8rem 1.8rem;
+    border-radius: 2px;
+    transition: all 0.3s;
+    display: inline-block;
+    cursor: pointer;
+    border: none;
+  }
+
+  .btn-primary { background: var(--accent); color: #0a0f1a; }
+  .btn-primary:hover { background: #7bbfff; }
+
+  .btn-outline { border: 1px solid var(--border); color: var(--muted); background: transparent; }
+  .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+
+  .hero-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: flex-end;
+  }
+
+  .stat-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 1.5rem 2rem;
+    text-align: right;
+    width: 240px;
+    transition: border-color 0.3s;
+  }
+
+  .stat-card:hover { border-color: rgba(91,164,245,0.35); }
+
+  .stat-num {
+    font-family: var(--serif);
+    font-size: 2.2rem;
+    font-weight: 300;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 0.25rem;
+  }
+
+  .stat-label {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .location-badge {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--accent2);
+    display: inline-block;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  /* SECTIONS */
+  section {
+    padding: 6rem 3rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .section-label::before {
+    content: '';
+    width: 2rem; height: 1px;
+    background: var(--accent);
+  }
+
+  .section-title {
+    font-family: var(--serif);
+    font-size: clamp(2rem, 3.5vw, 2.8rem);
+    font-weight: 300;
+    margin-bottom: 3rem;
+    line-height: 1.2;
+  }
+
+  .section-title em { font-style: italic; color: var(--accent); }
+
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 0;
+  }
+
+  /* ABOUT */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .about-text p {
+    color: var(--muted);
+    font-size: 0.95rem;
+    margin-bottom: 1.2rem;
+    line-height: 1.9;
+  }
+
+  .about-text p strong { color: var(--text); font-weight: 400; }
+
+  .about-aside { display: flex; flex-direction: column; gap: 1rem; }
+
+  .info-row {
+    display: flex;
+    gap: 1rem;
+    padding: 0.9rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .info-key {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    min-width: 100px;
+    padding-top: 0.15rem;
+  }
+
+  .info-val { font-size: 0.9rem; color: var(--text); }
+
+  .info-val a { color: var(--accent); text-decoration: none; }
+  .info-val a:hover { text-decoration: underline; }
+
+  /* SKILLS */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .skill-group {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 1.75rem;
+    transition: border-color 0.3s;
+  }
+
+  .skill-group:hover { border-color: rgba(91,164,245,0.3); }
+
+  .skill-group-title {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent2);
+    margin-bottom: 1rem;
+  }
+
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+
+  .tag {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    padding: 0.3rem 0.7rem;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    color: var(--muted);
+    transition: all 0.2s;
+  }
+
+  .tag:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* EXPERIENCE & RESEARCH */
+  .exp-list { display: flex; flex-direction: column; gap: 0; }
+
+  .exp-item {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 2rem;
+    padding: 2.5rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .exp-meta { padding-top: 0.2rem; }
+
+  .exp-date {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    margin-bottom: 0.5rem;
+  }
+
+  .exp-company {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    color: var(--accent);
+    font-style: italic;
+  }
+
+  .exp-role {
+    font-size: 1rem;
+    font-weight: 400;
+    margin-bottom: 0.75rem;
+    color: var(--text);
+  }
+
+  .exp-highlights {
+    margin-top: 0.75rem;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .exp-highlights li {
+    font-size: 0.85rem;
+    color: var(--muted);
+    padding-left: 1.2rem;
+    position: relative;
+    line-height: 1.75;
+  }
+
+  .exp-highlights li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+  }
+
+  .exp-highlights li strong { color: var(--text); font-weight: 400; }
+
+  /* PROJECTS */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .project-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 2rem;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .project-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 2px; height: 0;
+    background: var(--accent);
+    transition: height 0.4s;
+  }
+
+  .project-card:hover::before { height: 100%; }
+  .project-card:hover { border-color: rgba(91,164,245,0.25); }
+
+  .project-num {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    color: var(--accent);
+    margin-bottom: 1rem;
+  }
+
+  .project-name {
+    font-family: var(--serif);
+    font-size: 1.35rem;
+    font-weight: 300;
+    margin-bottom: 0.75rem;
+    line-height: 1.3;
+  }
+
+  .project-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.8; }
+
+  .project-tools {
+    margin-top: 1.25rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  /* EDUCATION */
+  .edu-list { display: flex; flex-direction: column; gap: 0; }
+
+  .edu-item {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 2rem;
+    padding: 2rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .edu-year {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+  }
+
+  .edu-inst {
+    font-family: var(--serif);
+    font-size: 1.2rem;
+    font-style: italic;
+    color: var(--accent);
+    margin-bottom: 0.25rem;
+  }
+
+  .edu-degree { font-size: 0.9rem; color: var(--text); margin-bottom: 0.4rem; }
+
+  .edu-note {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    color: var(--accent2);
+  }
+
+  /* ACHIEVEMENTS */
+  .achievements-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.2rem;
+  }
+
+  .achievement-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 1.5rem;
+    transition: border-color 0.3s;
+  }
+
+  .achievement-card:hover { border-color: rgba(201,169,110,0.3); }
+
+  .achievement-year {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    color: var(--gold);
+    margin-bottom: 0.5rem;
+  }
+
+  .achievement-title { font-size: 0.9rem; color: var(--text); line-height: 1.5; }
+
+  /* CERTIFICATES SECTION */
+  .cert-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .cert-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 1.5rem;
+    transition: border-color 0.3s;
+  }
+
+  .cert-card:hover { border-color: rgba(91,164,245,0.3); }
+
+  .cert-placeholder {
+    width: 100%;
+    height: 180px;
+    background: var(--bg3);
+    border: 2px dashed rgba(91,164,245,0.2);
+    border-radius: 2px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    cursor: pointer;
+    transition: border-color 0.3s;
+  }
+
+  .cert-placeholder:hover { border-color: rgba(91,164,245,0.5); }
+
+  .cert-placeholder-icon {
+    font-size: 1.5rem;
+    opacity: 0.3;
+  }
+
+  .cert-placeholder-text {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    text-align: center;
+  }
+
+  /* To use: replace the .cert-placeholder div with:
+     <img src="path/to/certificate.jpg" alt="Certificate Name" style="width:100%;height:180px;object-fit:cover;border-radius:2px;margin-bottom:1rem;">
+  */
+
+  .cert-title { font-size: 0.9rem; color: var(--text); margin-bottom: 0.3rem; }
+
+  .cert-issuer {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+  }
+
+  /* CONTACT */
+  .contact-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .contact-text {
+    font-family: var(--serif);
+    font-size: clamp(1.8rem, 3vw, 2.4rem);
+    font-weight: 300;
+    line-height: 1.3;
+  }
+
+  .contact-text em { font-style: italic; color: var(--accent); }
+
+  .contact-links { display: flex; flex-direction: column; gap: 1rem; }
+
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.25rem;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    text-decoration: none;
+    transition: all 0.3s;
+  }
+
+  .contact-link:hover { border-color: rgba(91,164,245,0.3); background: var(--bg3); }
+
+  .contact-link-label {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    min-width: 70px;
+  }
+
+  .contact-link-val { font-size: 0.9rem; color: var(--text); }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 2rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: none;
+  }
+
+  .footer-copy {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+  }
+
+  /* HOSTING NOTE */
+  .hosting-note {
+    background: var(--bg2);
+    border: 1px solid rgba(78,205,196,0.2);
+    border-radius: 4px;
+    padding: 2rem;
+    margin-top: 4rem;
+  }
+
+  .hosting-note h3 {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent2);
+    margin-bottom: 1rem;
+  }
+
+  .hosting-note p {
+    font-size: 0.85rem;
+    color: var(--muted);
+    line-height: 1.8;
+    margin-bottom: 0.75rem;
+  }
+
+  .hosting-note code {
+    font-family: var(--mono);
+    font-size: 0.8rem;
+    background: rgba(255,255,255,0.05);
+    padding: 0.15rem 0.4rem;
+    border-radius: 2px;
+    color: var(--accent);
+  }
+
+  /* FADE IN */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { gap: 1rem; }
+    .hero { padding: 6rem 1.5rem 3rem; }
+    .hero-inner { grid-template-columns: 1fr; gap: 3rem; }
+    .hero-stats { align-items: flex-start; }
+    .stat-card { width: 100%; text-align: left; }
+    section { padding: 4rem 1.5rem; }
+    .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .exp-item { grid-template-columns: 1fr; gap: 0.5rem; }
+    .edu-item { grid-template-columns: 1fr; gap: 0.5rem; }
+    .contact-wrapper { grid-template-columns: 1fr; gap: 2rem; }
+    footer { flex-direction: column; gap: 0.5rem; padding: 1.5rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">Asif S. K. Tanim</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#research">Research</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#achievements">Awards</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-tag">Industrial & Production Engineering · BUET</div>
+      <h1 class="hero-name">Asif Salman<br><em>Khan Tanim</em></h1>
+      <p class="hero-desc">
+        Senior IPE student at BUET who turns problems into measurable impact — from saving BDT 7 lakh annually at a multinational manufacturing setup to leading high-stakes student initiatives. Combining analytical depth with leadership execution.
+      </p>
+      <div class="hero-cta">
+        <a href="#experience" class="btn btn-primary">View Experience</a>
+        <a href="#research" class="btn btn-outline">Research</a>
+        <a href="#contact" class="btn btn-outline" style="border-color: rgba(78,205,196,0.4); color: var(--accent2);">Get In Touch</a>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div class="location-badge">
+        <span class="dot"></span>
+        Dhaka, Bangladesh
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">3.90</div>
+        <div class="stat-label">CGPA / 4.00 — Dean's List ×3</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">7L+</div>
+        <div class="stat-label">BDT Annual Savings Generated</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">1</div>
+        <div class="stat-label">Conference Paper — Bangkok 2026</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-label">About</div>
+  <h2 class="section-title">An engineer who<br><em>bridges analysis & impact</em></h2>
+  <div class="about-grid fade-up">
+    <div class="about-text">
+      <p>I'm an <strong>Industrial & Production Engineering student at BUET</strong>, currently in Level 4, with a passion for converting complex operational challenges into financially meaningful solutions. My work bridges data analysis, process engineering, and leadership.</p>
+      <p>My industrial attachment at <strong>British American Tobacco Bangladesh</strong> gave me hands-on exposure to real manufacturing challenges — I led a project that generated <strong>~7 lakh BDT in annual savings</strong> by redesigning a drum-draining technique that addressed 18–19 lakh BDT in annual material loss.</p>
+      <p>Beyond engineering, I serve as Cultural Secretary at AIPE BUET, author research papers, and have competed nationally in chess, physics, and mathematics olympiads. I thrive at the intersection of <strong>technical precision and creative leadership</strong>.</p>
+    </div>
+    <div class="about-aside">
+      <div class="info-row">
+        <span class="info-key">University</span>
+        <span class="info-val">Bangladesh University of Engineering and Technology (BUET)</span>
+      </div>
+      <div class="info-row">
+        <span class="info-key">Degree</span>
+        <span class="info-val">B.Sc. in Industrial & Production Engineering</span>
+      </div>
+      <div class="info-row">
+        <span class="info-key">Status</span>
+        <span class="info-val">Senior — Level 4 / Term 2 (Ongoing)</span>
+      </div>
+      <div class="info-row">
+        <span class="info-key">CGPA</span>
+        <span class="info-val">3.90 / 4.00 · Dean's List (3 times)</span>
+      </div>
+      <div class="info-row">
+        <span class="info-key">Location</span>
+        <span class="info-val">Dhaka, Bangladesh</span>
+      </div>
+      <div class="info-row">
+        <span class="info-key">Languages</span>
+        <span class="info-val">English (Fluent) · Bengali (Fluent) · Hindi (Conversational)</span>
+      </div>
+      <div class="info-row">
+        <span class="info-key">LinkedIn</span>
+        <span class="info-val"><a href="https://www.linkedin.com/in/asktanim/" target="_blank">linkedin.com/in/asktanim</a></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-label">Skills</div>
+  <h2 class="section-title">Tools &<br><em>capabilities</em></h2>
+  <div class="skills-grid fade-up">
+    <div class="skill-group">
+      <div class="skill-group-title">Technical Skills</div>
+      <div class="skill-tags">
+        <span class="tag">Python</span>
+        <span class="tag">Data Analysis</span>
+        <span class="tag">MATLAB</span>
+        <span class="tag">C Programming</span>
+        <span class="tag">SolidWorks</span>
+        <span class="tag">AutoCAD</span>
+        <span class="tag">Excel (Advanced)</span>
+        <span class="tag">Word</span>
+        <span class="tag">PowerPoint</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">Engineering Skills</div>
+      <div class="skill-tags">
+        <span class="tag">Process Optimization</span>
+        <span class="tag">Product Design</span>
+        <span class="tag">IoT Systems</span>
+        <span class="tag">Time Series Forecasting</span>
+        <span class="tag">Literature Review</span>
+        <span class="tag">Research Methodology</span>
+        <span class="tag">Operational Analysis</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">Soft Skills</div>
+      <div class="skill-tags">
+        <span class="tag">Communication</span>
+        <span class="tag">Collaboration</span>
+        <span class="tag">Leadership</span>
+        <span class="tag">Adaptability</span>
+        <span class="tag">Event Coordination</span>
+        <span class="tag">Strategic Problem Solving</span>
+        <span class="tag">Networking</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">Interests</div>
+      <div class="skill-tags">
+        <span class="tag">Music</span>
+        <span class="tag">Chess</span>
+        <span class="tag">Traveling</span>
+        <span class="tag">Competitive Programming</span>
+        <span class="tag">Physics & Math Olympiad</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-label">Experience</div>
+  <h2 class="section-title">Where I've<br><em>applied my work</em></h2>
+  <div class="exp-list">
+
+    <div class="exp-item fade-up">
+      <div class="exp-meta">
+        <div class="exp-date">November 2025 · 1 Month</div>
+        <div class="exp-company">British American Tobacco Bangladesh</div>
+      </div>
+      <div>
+        <div class="exp-role">Industrial Attachment Trainee</div>
+        <ul class="exp-highlights">
+          <li>Led the project <strong>"Reduction of Celando Residual Loss During BATB's Casing Operations by Inclined Drum Draining Technique"</strong>, targeting 18–19 lakh BDT annual material loss.</li>
+          <li>Designed and validated a practical recovery solution through controlled experimentation, generating <strong>annual savings of approximately 7 lakh BDT</strong> — significantly enhancing operational cost efficiency and sustainability.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item fade-up">
+      <div class="exp-meta">
+        <div class="exp-date">May 2025 — Present</div>
+        <div class="exp-company">AIPE, BUET</div>
+      </div>
+      <div>
+        <div class="exp-role">Cultural Secretary</div>
+        <ul class="exp-highlights">
+          <li>Directed end-to-end program planning for large-scale departmental events including <strong>Industrophillia</strong> and <strong>IPE Fiesta 2026</strong>.</li>
+          <li>Recruited and managed performers, led rehearsals, and structured full event schedules with cross-team coordination.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item fade-up">
+      <div class="exp-meta">
+        <div class="exp-date">Sep 2023 — Aug 2024</div>
+        <div class="exp-company">BUET Entrepreneurship Development Club</div>
+      </div>
+      <div>
+        <div class="exp-role">Secretary, Media & PR</div>
+        <ul class="exp-highlights">
+          <li>Managed official correspondence and partnership communications for BUET EDC.</li>
+          <li>Led promotional content strategy for flagship events such as <strong>EDC Talks</strong> across digital platforms.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item fade-up">
+      <div class="exp-meta">
+        <div class="exp-date">Mar 2023 — Aug 2024</div>
+        <div class="exp-company">BUET Chess Club</div>
+      </div>
+      <div>
+        <div class="exp-role">Executive Member</div>
+        <ul class="exp-highlights">
+          <li>Coordinated tournament logistics for the <strong>Intra-BUET Chess Championship 2023</strong>, managing boards, pieces, clocks, and match setup for 40+ participants to ensure smooth competition flow.</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- RESEARCH -->
+<section id="research">
+  <div class="section-label">Research</div>
+  <h2 class="section-title">Academic<br><em>contributions</em></h2>
+  <div class="exp-list">
+
+    <div class="exp-item fade-up">
+      <div class="exp-meta">
+        <div class="exp-date">March 2026</div>
+        <div class="exp-company">7th Asia Pacific IEOM Conference</div>
+      </div>
+      <div>
+        <div class="exp-role">Conference Paper — Bangkok, Thailand</div>
+        <ul class="exp-highlights">
+          <li><em>Optimizing Ambulance Routing with Time Series Forecasting for Hospital Readiness and Emergency Call Patterns</em></li>
+          <li>Accepted for presentation and publication at the 7th Asia Pacific IEOM Conference 2026. <strong>(Paper ID: 224)</strong></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item fade-up">
+      <div class="exp-meta">
+        <div class="exp-date">April 2026</div>
+        <div class="exp-company">IEOM BUET Student Chapter</div>
+      </div>
+      <div>
+        <div class="exp-role">ResearchSpark — 2nd Runner-Up, 3-Minute Thesis Competition</div>
+        <ul class="exp-highlights">
+          <li>Presented research findings in a competitive 3-minute thesis format, earning 2nd Runner-Up recognition.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item fade-up">
+      <div class="exp-meta">
+        <div class="exp-date">Sep 2024 — Present</div>
+        <div class="exp-company">Under Ridwan Al Aziz, Asst. Prof., IPE, BUET</div>
+      </div>
+      <div>
+        <div class="exp-role">Research Assistant & Author</div>
+        <ul class="exp-highlights">
+          <li>Engaged in early-stage paper writing including conducting a comprehensive literature review and developing research methodologies.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item fade-up">
+      <div class="exp-meta">
+        <div class="exp-date">Jun 2024 — Present</div>
+        <div class="exp-company">Under Chitra Lekha Karmaker, PhD Student, BUET</div>
+      </div>
+      <div>
+        <div class="exp-role">Research Assistant — Data Annotation & Cleaning</div>
+        <ul class="exp-highlights">
+          <li>Contributing to an ongoing research project through systematic data annotation, cleaning, and quality validation.</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- EXTRACURRICULAR -->
+<section id="extracurricular">
+  <div class="section-label">Extracurricular</div>
+  <h2 class="section-title">Beyond<br><em>the classroom</em></h2>
+  <div class="exp-list">
+
+    <div class="exp-item fade-up">
+      <div class="exp-meta">
+        <div class="exp-date">August 2023</div>
+        <div class="exp-company">Don Sumdany Team</div>
+      </div>
+      <div>
+        <div class="exp-role">Volunteer — Berger presents Rise Above All 2023, powered by Daraz</div>
+        <ul class="exp-highlights">
+          <li>Selected as the <strong>sole representative from BUET</strong>, managing crowd coordination and on-ground operations for a 3,000+ attendee event.</li>
+          <li>Ensured smooth guest flow and real-time support for a 200-person assigned section.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item fade-up">
+      <div class="exp-meta">
+        <div class="exp-date">January 2023</div>
+        <div class="exp-company">Hult Prize — BUET</div>
+      </div>
+      <div>
+        <div class="exp-role">Top 16 Team</div>
+        <ul class="exp-highlights">
+          <li>Developed a sustainable for-profit venture named <strong>"Juth Webster"</strong> — a web-based apparel waste trading platform with comprehensive financial analysis, guiding the team to a Top 16 finish.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item fade-up">
+      <div class="exp-meta">
+        <div class="exp-date">August 2022</div>
+        <div class="exp-company">IEOM BUET Student Chapter</div>
+      </div>
+      <div>
+        <div class="exp-role">Finalist — Innovative Design Idea Competition</div>
+        <ul class="exp-highlights">
+          <li>Led a 3-member team developing an online-based nurse and babysitting service venture model with comprehensive financial feasibility analysis.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item fade-up">
+      <div class="exp-meta">
+        <div class="exp-date">June 2022</div>
+        <div class="exp-company">BUET</div>
+      </div>
+      <div>
+        <div class="exp-role">5th Place — Freshers Chess Championship 2022</div>
+        <ul class="exp-highlights">
+          <li>Competed and secured 5th position in the BUET Freshers Chess Championship 2022.</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-label">Projects</div>
+  <h2 class="section-title">Selected<br><em>work</em></h2>
+  <div class="projects-grid">
+    <div class="project-card fade-up">
+      <div class="project-num">01 / Product Design</div>
+      <div class="project-name">AquaPellet Feeder</div>
+      <p class="project-desc">Designed the AquaPellet Feeder as part of a sessional course, leading a 5-person team. Covered product conceptualization, CAD modeling, material selection, ergonomics, and manufacturing feasibility.</p>
+      <div class="project-tools">
+        <span class="tag">Product Design</span>
+        <span class="tag">CAD</span>
+        <span class="tag">Team Leadership</span>
+        <span class="tag">DFM</span>
+      </div>
+    </div>
+    <div class="project-card fade-up">
+      <div class="project-num">02 / IoT System</div>
+      <div class="project-name">Real-Time Air Quality Monitor</div>
+      <p class="project-desc">Designed and developed a Real-Time IoT-Based Air Quality and Temperature Monitoring System for CNG/LP Gas Bottling Plants. Addressed critical safety and environmental monitoring needs.</p>
+      <div class="project-tools">
+        <span class="tag">IoT</span>
+        <span class="tag">Embedded Systems</span>
+        <span class="tag">Sensor Integration</span>
+        <span class="tag">Python</span>
+      </div>
+    </div>
+    <div class="project-card fade-up">
+      <div class="project-num">03 / Manufacturing</div>
+      <div class="project-name">BATB Casing Loss Reduction</div>
+      <p class="project-desc">Led the experiment and recovery solution design to address 18–19 lakh BDT annual material loss in BATB's casing operations using an inclined drum draining technique, achieving ~7 lakh BDT in annual savings.</p>
+      <div class="project-tools">
+        <span class="tag">Process Engineering</span>
+        <span class="tag">Cost Analysis</span>
+        <span class="tag">Operational Efficiency</span>
+      </div>
+    </div>
+    <div class="project-card fade-up">
+      <div class="project-num">04 / Research</div>
+      <div class="project-name">Ambulance Routing Optimization</div>
+      <p class="project-desc">Applied time series forecasting to optimize ambulance routing and improve hospital readiness by analyzing emergency call patterns. Accepted at the 7th Asia Pacific IEOM Conference 2026 in Bangkok.</p>
+      <div class="project-tools">
+        <span class="tag">Time Series Forecasting</span>
+        <span class="tag">Python</span>
+        <span class="tag">Operations Research</span>
+        <span class="tag">Data Analysis</span>
+      </div>
+    </div>
+    <div class="project-card fade-up">
+      <div class="project-num">05 / Entrepreneurship</div>
+      <div class="project-name">Juth Webster — Hult Prize</div>
+      <p class="project-desc">Conceived a web-based apparel waste trading platform as a sustainable for-profit venture with comprehensive financial modeling. Led the team to a Top 16 finish at the Hult Prize competition at BUET.</p>
+      <div class="project-tools">
+        <span class="tag">Business Model</span>
+        <span class="tag">Financial Analysis</span>
+        <span class="tag">Sustainability</span>
+        <span class="tag">Web Platform</span>
+      </div>
+    </div>
+    <div class="project-card fade-up">
+      <div class="project-num">06 / Venture Design</div>
+      <div class="project-name">Online Nurse & Babysitting Service</div>
+      <p class="project-desc">Led a 3-member team developing an online-based nurse and babysitting service model with full financial feasibility analysis. Reached the Finalist stage of the Innovative Design Idea Competition (IEOM BUET).</p>
+      <div class="project-tools">
+        <span class="tag">Venture Design</span>
+        <span class="tag">Feasibility Analysis</span>
+        <span class="tag">Team Leadership</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="section-label">Education</div>
+  <h2 class="section-title">Academic<br><em>background</em></h2>
+  <div class="edu-list">
+    <div class="edu-item fade-up">
+      <div class="edu-year">Jan 2022 — Present</div>
+      <div>
+        <div class="edu-inst">Bangladesh University of Engineering and Technology</div>
+        <div class="edu-degree">B.Sc. in Industrial & Production Engineering · Level 4 / Term 2 (Ongoing)</div>
+        <div class="edu-note">CGPA: 3.90 / 4.00 · Dean's List (3 times) · Dhaka, Bangladesh</div>
+      </div>
+    </div>
+    <div class="edu-item fade-up">
+      <div class="edu-year">Jul 2018 — Apr 2020</div>
+      <div>
+        <div class="edu-inst">Murari Chand College</div>
+        <div class="edu-degree">Higher Secondary School Certificate (HSC)</div>
+        <div class="edu-note">GPA: 5.00 / 5.00 · Sylhet, Bangladesh</div>
+      </div>
+    </div>
+    <div class="edu-item fade-up">
+      <div class="edu-year">Jan 2011 — Feb 2018</div>
+      <div>
+        <div class="edu-inst">Sylhet Govt. Pilot High School</div>
+        <div class="edu-degree">Secondary School Certificate (SSC)</div>
+        <div class="edu-note">GPA: 5.00 / 5.00 · Sylhet, Bangladesh</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ACHIEVEMENTS -->
+<section id="achievements">
+  <div class="section-label">Awards & Achievements</div>
+  <h2 class="section-title">Recognition &<br><em>milestones</em></h2>
+  <div class="achievements-grid fade-up">
+    <div class="achievement-card">
+      <div class="achievement-year">2026</div>
+      <div class="achievement-title">2nd Runner-Up — ResearchSpark 3-Minute Thesis Competition, IEOM BUET</div>
+    </div>
+    <div class="achievement-card">
+      <div class="achievement-year">2026</div>
+      <div class="achievement-title">Conference Paper Accepted — 7th Asia Pacific IEOM Conference, Bangkok, Thailand</div>
+    </div>
+    <div class="achievement-card">
+      <div class="achievement-year">2022–Present</div>
+      <div class="achievement-title">Dean's List — Bangladesh University of Engineering and Technology (3 times)</div>
+    </div>
+    <div class="achievement-card">
+      <div class="achievement-year">2023</div>
+      <div class="achievement-title">Top 16 — Hult Prize Competition, BUET</div>
+    </div>
+    <div class="achievement-card">
+      <div class="achievement-year">2019</div>
+      <div class="achievement-title">Regional Champion — Bangladesh Physics Olympiad</div>
+    </div>
+    <div class="achievement-card">
+      <div class="achievement-year">2019</div>
+      <div class="achievement-title">Regional Champion — Bangladesh Math Olympiad</div>
+    </div>
+    <div class="achievement-card">
+      <div class="achievement-year">2019</div>
+      <div class="achievement-title">Division Champion — Shuddho Shure Jatiya Sangeet Protijogita (National Music Competition)</div>
+    </div>
+    <div class="achievement-card">
+      <div class="achievement-year">2017</div>
+      <div class="achievement-title">Divisional Champion — National Essay Writing Competition, Islamic Foundation, Bangladesh</div>
+    </div>
+    <div class="achievement-card">
+      <div class="achievement-year">2016</div>
+      <div class="achievement-title">District Champion (Bangladesh Studies) — Creative Talent Hunt, Bangladesh</div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- CERTIFICATES -->
+<section id="certificates">
+  <div class="section-label">Certificates</div>
+  <h2 class="section-title">Credentials &<br><em>certifications</em></h2>
+  <p style="font-size:0.9rem; color:var(--muted); margin-bottom: 2rem; line-height:1.8;">
+    Add your certificate images below. Replace the placeholder divs with <code style="font-family:var(--mono);font-size:0.8rem;background:rgba(255,255,255,0.05);padding:0.15rem 0.4rem;border-radius:2px;color:var(--accent);">&lt;img&gt;</code> tags pointing to your certificate image files.
+  </p>
+  <div class="cert-grid fade-up">
+    <!-- CERTIFICATE 1: Replace placeholder with your image -->
+    <div class="cert-card">
+      <!-- Replace the div below with: <img src="certificate1.jpg" alt="Certificate Name" style="width:100%;height:180px;object-fit:cover;border-radius:2px;margin-bottom:1rem;"> -->
+      <div class="cert-placeholder">
+        <div class="cert-placeholder-icon">🖼</div>
+        <div class="cert-placeholder-text">Add Certificate Image<br>(replace this div with &lt;img&gt; tag)</div>
+      </div>
+      <div class="cert-title">Certificate Title Here</div>
+      <div class="cert-issuer">Issuing Organization · Year</div>
+    </div>
+    <!-- CERTIFICATE 2 -->
+    <div class="cert-card">
+      <div class="cert-placeholder">
+        <div class="cert-placeholder-icon">🖼</div>
+        <div class="cert-placeholder-text">Add Certificate Image<br>(replace this div with &lt;img&gt; tag)</div>
+      </div>
+      <div class="cert-title">Certificate Title Here</div>
+      <div class="cert-issuer">Issuing Organization · Year</div>
+    </div>
+    <!-- CERTIFICATE 3 -->
+    <div class="cert-card">
+      <div class="cert-placeholder">
+        <div class="cert-placeholder-icon">🖼</div>
+        <div class="cert-placeholder-text">Add Certificate Image<br>(replace this div with &lt;img&gt; tag)</div>
+      </div>
+      <div class="cert-title">Certificate Title Here</div>
+      <div class="cert-issuer">Issuing Organization · Year</div>
+    </div>
+    <!-- Add more certificate cards as needed -->
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-label">Contact</div>
+  <div class="contact-wrapper fade-up">
+    <div class="contact-text">
+      Let's build something<br><em>impactful together</em>
+    </div>
+    <div class="contact-links">
+      <a href="mailto:asktanim.edu@gmail.com" class="contact-link">
+        <span class="contact-link-label">Email</span>
+        <span class="contact-link-val">asktanim.edu@gmail.com</span>
+      </a>
+      <a href="tel:+8801738982641" class="contact-link">
+        <span class="contact-link-label">Phone</span>
+        <span class="contact-link-val">+880 1738 982641</span>
+      </a>
+      <a href="https://www.linkedin.com/in/asktanim/" target="_blank" class="contact-link">
+        <span class="contact-link-label">LinkedIn</span>
+        <span class="contact-link-val">linkedin.com/in/asktanim →</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- HOSTING NOTE -->
+  <div class="hosting-note">
+    <h3>💡 How to Host on GitHub Pages (Free)</h3>
+    <p><strong>Step 1:</strong> Create a free account at <code>github.com</code> and create a new repository named <code>yourusername.github.io</code> (replace "yourusername" with your actual GitHub username).</p>
+    <p><strong>Step 2:</strong> Upload this <code>index.html</code> file (rename this file to <code>index.html</code>) plus any certificate images to the repository root.</p>
+    <p><strong>Step 3:</strong> Go to your repository <code>Settings → Pages → Source → Deploy from a branch → main</code>. Click Save.</p>
+    <p><strong>Step 4:</strong> Your portfolio will be live at <code>https://yourusername.github.io</code> within a few minutes — accessible to anyone, completely free!</p>
+    <p>You can also use <strong>Netlify</strong> (netlify.com) by dragging and dropping your HTML file — even simpler, with a free custom subdomain like <code>asiftanim.netlify.app</code>.</p>
+  </div>
+</section>
+
+<footer>
+  <span class="footer-copy">© 2026 Asif Salman Khan Tanim · Industrial & Production Engineering, BUET</span>
+  <span class="footer-copy">Dhaka, Bangladesh</span>
+</footer>
+
+<script>
+  // Fade-in animation on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) e.target.classList.add('visible');
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
